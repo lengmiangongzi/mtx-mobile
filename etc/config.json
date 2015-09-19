@@ -1,0 +1,7 @@
+{
+    "appname": "募天下理财网 - 中国最大的线上理财服务平台",
+    "base": "",
+    "version": "1.0.0",
+    "api": "http://mtx01.wmcloud-qa.com/",
+    "isProduct":false
+}

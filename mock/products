@@ -1,0 +1,61 @@
+{
+
+  "stocks": [
+    {
+      "fundCode": "FUN0009471",
+      "fundAbbr": "股票1期",
+      "companys": [
+                "弈泰资产"
+            ],
+      "managers": [
+                "胡志刚"
+            ],
+      "managerName": "赵军",
+      "allYieldSinceCreated": "213.45",
+      "netValue": "12.11",
+      "reason": "每年正收益，每年复合增长率28.4%"
+    },
+    {
+      "fundCode": "FUN0009471",
+      "fundAbbr": "股票2期",
+      "companys": [
+                "弈泰资产"
+            ],
+      "managers": [
+                "胡志刚"
+            ],,
+      "allYieldSinceCreated": "213.45",
+      "netValue": "12.11",
+      "reason": "每年正收益，每年复合增长率28.4%"
+    }
+  ],
+  "futures": [
+    {
+      "fundCode": "FUN0009471",
+      "fundAbbr": "价值1期",
+      "companys": [
+                "弈泰资产"
+            ],
+      "managers": [
+                "胡志刚"
+            ],
+      "allYieldSinceCreated": "213.45",
+      "netValue": "12.11",
+      "reason": "每年正收益，每年复合增长率28.4%"
+    },
+    {
+      "fundCode": "FUN0009471",
+      "fundAbbr": "价值2期",
+      "companys": [
+                "弈泰资产"
+            ],
+      "managers": [
+                "胡志刚"
+            ],
+      "allYieldSinceCreated": "213.45",
+      "netValue": "12.11",
+      "reason": "每年正收益，每年复合增长率28.4%"
+    }
+  ]
+}
+

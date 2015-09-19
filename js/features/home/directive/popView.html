@@ -1,0 +1,35 @@
+<!-- <div class="overfix"></div> -->
+
+    <div id="popView">
+        <div class="overPop"></div>
+        <div class="popDiv">
+            <div class="tit">预约咨询<a ng-click="close()">×</a></div>
+            <div class="popBd">
+                <div ng-show="!isSubmit">
+                    <input type="text" placeholder="2-25位中文名/英文名" ng-maxlength="25" maxlength="25" ng-model="inName" ng-trim="true">
+                    <p class="error">{{ errorName }}</p>
+                    <input type="text" placeholder="手机或者固定电话" ng-model="inPhone" ng-maxlength="15" maxlength="15" ng-trim="true">
+                    <p class="error">{{ errorPhone }}</p>
+                    <p class="typeTit">私募基金特点</p>
+                    <ul class="typeTitList">
+                        <li>1：追求绝对收益</li>
+                        <li>2：平均年化收益30%以上</li>
+                        <li>3：在震荡市有更好表现</li>
+                    </ul>
+                    <a ng-click="onSubmit()" class="btnLink btn_primary">立即预约</a>
+                    <p class="tip">专业投资会在1小时内与您联系</p>
+                    <p class="hotline">咨询热线：<span>400-082-0396</span></p>
+                </div>
+                <div ng-show="isSubmit">
+
+                    <div class="orderBlock">
+                        <img src="img/right.png" alt="">
+                        <p>您已预约成功，募天下专业客<br/>服会在1小时内与您联系。</p>
+                        <a ng-click="onOK()" class="btnLink btn_primary">知道了</a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>

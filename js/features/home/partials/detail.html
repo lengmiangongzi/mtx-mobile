@@ -1,0 +1,313 @@
+<div class="m_content">
+        
+        <div class="m_nav">
+            <a href="/list"><i class="leftArr"></i><span>产品列表</span></a>
+            <div>
+                {{detail.privateFundInfo.fundAbbr}}
+            </div>
+        </div>
+        
+        <div class="detail_desc">
+            <div class="name">
+                <i class="exclusive"></i>
+                <p>
+                    <span>推荐指数</span>
+                    <i class="white_star"></i>
+                    <i class="white_star"></i>
+                    <i class="white_star"></i>
+                    <i class="white_star"></i>
+                    <i class="white_star"></i>
+                </p>
+                <h4><span>{{detail.privateFundInfo.fundAbbr}}</span></h4>
+            </div>
+
+            <table cellpadding="0" cellspacing="0" border="0" width="100%">
+                <tr>
+                    <td rowspan="2" width="40%">
+                        <span class="price" ng-if="detail.privateFundInfo.allYieldSinceCreated==null">--<font>%</font></span>
+                        <span class="price" ng-if="detail.privateFundInfo.allYieldSinceCreated!=null">{{detail.privateFundInfo.allYieldSinceCreated}}<font>%</font></span>
+                        <p>累计收益</p>
+                    </td>
+                    <td>
+                        <span ng-if="detail.privateFundInfo.netValue==null">--</span>
+                        <span ng-if="detail.privateFundInfo.netValue!=null">{{detail.privateFundInfo.netValue}}</span>
+                        <p>最新净值</p>
+                    </td>
+                    <td>
+                        <span ng-bind="detail.strategyName"></span>
+                        <p>投资风格</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span ng-bind="detail.companyList[0].companyAbbr"></span>
+                        <p>投顾公司</p>
+                    </td>
+                    <td>
+                        <span ng-if="detail.privateFundInfo.subscriptionStartPoint==null">--万</span>
+                        <span ng-if="detail.privateFundInfo.subscriptionStartPoint!=null">{{detail.privateFundInfo.subscriptionStartPoint}}万</span>
+                        <p>认购起点</p>
+                    </td>
+                </tr>
+            </table>
+
+            <a ng-click="showPopView(detail.privateFundInfo.fundCode,detail.privateFundInfo.fundAbbr)" class="btnLink btn_primary">立即预约</a>
+        </div>
+
+        <div class="detail_history">
+            <h4>从历史业绩看，投入<span class="red_f">100万</span>收益如下</h4>
+            <table cellspacing="0" cellpadding="0">
+                <tr>
+                    <th>时间</th>
+                    <th>收益</th>
+                </tr>
+                <tr>
+                    <td>近3个月</td>
+                    <td ng-if="detail.privateFundInfo.yield3Month == null">--
+                    </td>
+                    <td class="green_f" ng-if="detail.privateFundInfo.yield3Month != null&&detail.privateFundInfo.yield3Month<=0">亏{{-detail.privateFundInfo.yield3Month*10000 | number:0}}</td>
+                    <td class="red_f" ng-if="detail.privateFundInfo.yield3Month != null&&detail.privateFundInfo.yield3Month>0">赚{{detail.privateFundInfo.yield3Month*10000 | number:0}}</td>
+                </tr>
+                <tr>
+                    <td>今年以来</td>
+                    <td ng-if="detail.privateFundInfo.yield2015 == null">--
+                    </td>
+                    <td class="green_f" ng-if="detail.privateFundInfo.yield2015 != null&&detail.privateFundInfo.yield2015<=0">亏{{-detail.privateFundInfo.yield2015*10000 | number:0}}</td>
+                    <td class="red_f" ng-if="detail.privateFundInfo.yield2015 != null&&detail.privateFundInfo.yield2015>0">赚{{detail.privateFundInfo.yield2015*10000 | number:0}}</td>
+                </tr>
+                <tr>
+                    <td>2014年</td>
+                    <td ng-if="detail.privateFundInfo.yield2014 == null">--
+                    </td>
+
+                    <td class="green_f" ng-if="detail.privateFundInfo.yield2014 != null&&detail.privateFundInfo.yield2014<=0">亏{{-detail.privateFundInfo.yield2014*10000 | number:0}}</td>
+                    <td class="red_f" ng-if="detail.privateFundInfo.yield2014 != null&&detail.privateFundInfo.yield2014>0">赚{{detail.privateFundInfo.yield2014*10000 | number:0}}</td>
+                </tr>
+                <tr>
+                    <td>2013年</td>
+                    <td ng-if="detail.privateFundInfo.yield2013 == null">--
+                    </td>
+                    <td class="green_f" ng-if="detail.privateFundInfo.yield2013 != null&&detail.privateFundInfo.yield2013<=0">亏{{-detail.privateFundInfo.yield2013*10000 | number:0}}</td>
+                    <td class="red_f" ng-if="detail.privateFundInfo.yield2013 != null&&detail.privateFundInfo.yield2013>0">赚{{detail.privateFundInfo.yield2013*10000 | number:0}}</td>
+                </tr>
+            </table>
+        </div>
+
+         <div class="detail_block">
+            <div class="tit">
+                净值走势
+            </div>
+            <div class="day">
+            从 {{ beginDate }} 至 {{ endDate }}
+            </div>
+            <div class="chart" trend-chart data="detail.yieldCurve"></div>
+        </div>
+
+
+        <div class="detail_block">
+            <div class="tit">
+                投顾信息
+            </div>
+
+            <p class="n" >基金经理 | {{detail.managerList[0].name}}</p>
+            <p>{{detail.managerList[0].description}}</p>
+
+            <p class="n">私募公司 | {{detail.companyList[0].companyName}}</p>
+            <p>{{detail.companyList[0].description}}</p>
+        </div>
+
+        <div class="detail_block">
+            <div class="tit">
+                投资理念
+            </div>
+            <p>{{detail.companyList[0].investStrategy}}</p>
+        </div>
+
+        <div class="detail_block">
+            <div class="tit">
+                认购须知
+            </div>
+
+            <ul>
+                <li class="long">
+                    <span>产品全称：</span>
+                    <label ng-if="detail.privateFundInfo.name==null">--</label>
+                    <label ng-if="detail.privateFundInfo.name!=null">{{detail.privateFundInfo.name}}</label>
+                </li>
+                <li>
+                    <span>产品类型：</span>
+                    <label ng-if="detail.typeName==null">--</label>
+                    <label ng-if="detail.typeName!=null">{{detail.typeName}}</label>       
+                </li>
+                <li>
+                    <span>交易经纪：</span>
+                    <label ng-if="detail.privateFundInfo.tradingBroker==null">--</label>
+                    <label ng-if="detail.privateFundInfo.tradingBroker!=null">{{detail.privateFundInfo.tradingBroker}}</label>
+                </li>
+                <li>
+                    <span>发行平台:</span>
+                    <label ng-if="detail.privateFundInfo.issuePlatform==null">--</label>
+                    <label ng-if="detail.privateFundInfo.issuePlatform!=null">{{detail.privateFundInfo.issuePlatform}}</label>                     
+                </li>
+                <li>
+                    <span>托管银行：</span>
+                    <label ng-if="detail.privateFundInfo.trustee==null">--</label>
+                    <label ng-if="detail.privateFundInfo.trustee!=null">{{detail.privateFundInfo.trustee}}</label>                      
+                </li>
+                <li>
+                    <span>存续期限：</span>
+                    <label ng-if="detail.privateFundInfo.duration==null">--</label>
+                    <label ng-if="detail.privateFundInfo.duration!=null">{{detail.privateFundInfo.duration}}(月)</label>                      
+                </li>
+                <li>
+                    <span>成立日期：</span>
+                     <label ng-if="detail.fundCreateDateString==null">--</label>
+                    <label ng-if="detail.fundCreateDateString!=null">{{detail.fundCreateDateString}}</label>  
+                </li>
+            </ul>
+
+            <div class="redemption">
+                <span>申购赎回</span>
+            </div>
+
+            <ul>
+                <li class="long">
+                    <span>开放日：</span>
+                    <label ng-if="detail.openDateString==null">--</label>
+                    <label ng-if="detail.openDateString!=null">{{detail.openDateString}}</label> 
+                </li>
+                <li class="long">
+                    <span>业绩保持：</span>
+                    <label ng-if="detail.privateFundInfo.performanceReturn==null">--</label>
+                    <label ng-if="detail.privateFundInfo.performanceReturn!=null">{{detail.privateFundInfo.performanceReturn}}%</label> 
+                </li>
+                <li>
+                    <span>认购费：</span>
+                    <label ng-if="detail.privateFundInfo.issueFee==null">--</label>
+                    <label ng-if="detail.privateFundInfo.issueFee!=null">{{detail.privateFundInfo.issueFee}}%</label> 
+                </li>
+                <li>
+                    <span>退出费：</span>
+                    <label ng-if="detail.privateFundInfo.redeemFee==null">--</label>
+                    <label ng-if="detail.privateFundInfo.redeemFee!=null">{{detail.privateFundInfo.redeemFee}}%</label> 
+                </li>
+                <li>
+                    <span>认购起点：</span>
+                    <label ng-if="detail.privateFundInfo.subscriptionStartPoint==null">--</label>
+                    <label ng-if="detail.privateFundInfo.subscriptionStartPoint!=null">{{detail.privateFundInfo.subscriptionStartPoint}}万</label> 
+                </li>
+                <li>
+                    <span>封闭期：</span>
+                    <label ng-if="detail.privateFundInfo.closingDuration==null">--</label>
+                    <label ng-if="detail.privateFundInfo.closingDuration!=null">{{detail.privateFundInfo.closingDuration}}(月)</label>                   
+                </li>
+            </ul>
+
+        </div>
+
+        <div class="detail_block pro_scarcity">
+            <div class="tit">
+                私募精选
+                <a href="list">更多&gt;</a>
+            </div>
+
+
+            <div class="item major">
+                <i class="label"></i>
+                <div class="fl" >
+                    <h3 ng-click="gotoDetail('FUN0008074')"><a href="">富善优享1号</a></h3>
+                    <ul>
+                        <li><span class="n">投资顾问：</span><a ng-click="searchText('富善投资')">富善投资</a></li>
+                        <li><span class="n">基金经理：</span><a ng-click="searchText('林成栋')">林成栋</a></li>
+                        <li ng-click="gotoDetail('FUN0008074')"><span class="n">推荐理由：</span>今年以来收益风险比最高私募。2014年度金牛私募管理公司明星团队管理，稳定收益，可控回撤，震荡市最佳选择。</li>
+                    </ul>
+                </div>
+                <div class="fr" >
+                    <div ng-click="gotoDetail('FUN0008074')">
+                    <p>预期年化收益</p>
+                    <p class="price">30.09<font>%</font></p>
+                    <p>最大回撤</p>
+                    <p class="price">2.98<font>%</font></p>
+                    </div>
+                    <a ng-click="showPopView('FUN0008074','富善优享1号')" class="btnLink btn_primary">立即预约</a>
+                </div>
+            </div>
+
+            <div class="item">
+                <i class="label"></i>
+                <div class="fl" >
+                    <h3><a href="javascript:;" ng-click="gotoDetail('FUN0009471')">呈瑞1期</a></h3>
+                    <ul>
+                        <li><span class="n">投资顾问：</span><a ng-click="searchText('吴瑞投资')">吴瑞投资</a></li>
+                        <li><span class="n">基金经理：</span><a ng-click="searchText('沈守传')">沈守传</a></li>
+                        <li ng-click="gotoDetail('FUN0009471')"><span class="n">推荐理由：</span>坚持专注成长，控制风险，顺势而为投资理念，选择商业模式优秀、竞争力强的公司，提供长期的稳定可持续，穿越牛熊市。</li>
+                    </ul>
+                </div>
+                <div class="fr">
+                <div ng-click="gotoDetail('FUN0009471')">
+                    <p >累计收益</p>
+                    <p class="price">418.47<font>%</font></p>
+                    <p>今年以来收益</p>
+                    <p class="price">90.66<font>%</font></p>
+                </div>
+                    
+                    <a ng-click="showPopView('FUN0009471','呈瑞1期')" class="btnLink btn_scarcity">立即预约</a>
+                </div>
+            </div><!-- item -->
+
+            <div class="item" >
+                <i class="label"></i>
+                <div class="fl" >
+                    <h3><a href="javascript:;" ng-click="gotoDetail('FUN0008976')">得利宝-至尊6号</a></h3>
+                    <ul>
+                        <li><span class="n">投资顾问：</span><a ng-click="searchText('六禾投资')">六禾投资</a></li>
+                        <li><span class="n">基金经理：</span><a ng-click="searchText('夏晓辉')">夏晓辉</a></li>
+                        <li ng-click="gotoDetail('FUN0008976')"><span class="n">推荐理由：</span>秉承价值投资理念，致力于通过揭示价格、投入资本、倾注思想等三种方式，促进优秀企业家、稀缺资源和领先技术这三者的价值合理化，帮助客户实现资本增值。</li>
+                    </ul>
+                </div>
+                <div class="fr">
+                    <div ng-click="gotoDetail('FUN0008976')">
+                        <p>累计收益</p>
+                        <p class="price">107.79<font>%</font></p>
+                        <p>今年以来收益</p>
+                        <p class="price">59.89<font>%</font></p>
+                    </div>
+                    
+                    <a ng-click="showPopView('FUN0008976','至尊6号')" class="btnLink btn_scarcity">立即预约</a>
+                </div>
+            </div>
+
+            <div class="item" >
+                <i class="label"></i>
+                <div class="fl" >
+                    <h3><a href="javascript:;" ng-click="gotoDetail('FUN0009446')">世诚扬子3号</a></h3>
+                    <ul>
+                        <li><span class="n">投资顾问：</span><a ng-click="searchText('世诚投资')">世诚投资</a></li>
+                        <li><span class="n">基金经理：</span><a ng-click="searchText('陈家琳')">陈家琳</a></li>
+                        <li ng-click="gotoDetail('FUN0009446')"><span class="n">推荐理由：</span>世诚投资是行业内调研频率最高的私募基金管理人，对组合内的重仓股反复调研，为客户创造绝对回报和较好的相对收益。</li>
+                    </ul>
+                </div>
+                <div class="fr">
+                <div ng-click="gotoDetail('FUN0009446')">
+                    <p >成立以来</p>
+                    <p class="price" >218.16<font>%</font></p>
+                    <p >最近一年</p>
+                    <p class="price" >65.34<font>%</font></p>
+                </div>
+                    <a ng-click="showPopView('FUN0009446','世诚扬子3号')" class="btnLink btn_scarcity">立即预约</a>
+                </div>
+            </div>
+
+
+        </div>
+
+    </div>
+
+    <div pop-view data="popData" ng-show="popData.isShow"></div>
+
+    <div class="fixblock">
+        <ul>
+            <li><i class="tele"></i><a href="tel:4000820396">电话咨询</a></li>
+            <li class="info" ng-click="showPopView('','')"><i class="person"></i><a>预约咨询</a></li>
+        </ul>
+    </div>

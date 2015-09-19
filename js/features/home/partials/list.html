@@ -1,0 +1,83 @@
+<div class="m_content">
+        
+        <div class="m_nav">
+            <a href="/home"><i class="leftArr"></i><span>首页</span></a>
+            产品列表
+        </div>
+
+
+        <ul class="pro_tools">
+            <li ng-class="{'act':strag}" ng-click="showStrag()">
+                <em></em>
+                <i class="icon01" >
+                </i>投资策略</li>
+            <li ng-class="{'act':profit}" ng-click="showProfit()">
+                <em></em>
+                <i class="icon02" >
+                </i>累计收益</li>
+            <li ng-class="{'act':time0}" ng-click="showTime()">
+                <em></em>
+                <i class="icon03" >
+                </i>成立时间</li>
+        </ul>
+        <ol class="pro_tools_pull" ng-show="strag">
+            <li ng-click="setSearchStrategy(item.key)" ng-repeat="item in STRATEGYS">{{ item.value }}</li>
+        </ol>
+        <ol class="pro_tools_pull" ng-show="profit">
+            <li ng-click="setSearchNetvalue(item.key)" ng-repeat="item in NETVALUES">{{ item.value }}</li>
+        </ol>
+        <ol class="pro_tools_pull" ng-show="time0">
+            <li ng-click="setSearchFundtime(item.key)" ng-repeat="item in FUNDCREATETIMES">{{ item.value }}</li>
+        </ol>
+
+        <div class="mSearchBar">
+            <div class="searchOut">
+                <span class="all">共{{ listDatas.totalCount }}条</span>
+                <p><span>搜索条件：</span>
+                <label ng-repeat="item in infos track by $index" style="color:#858384">{{item}}<font ng-if="!$last">&nbsp;+&nbsp;</font></label>
+                </p>
+                <input type="text" placeholder="输入投顾名称，基金经理搜索" ng-model="searchInfo.searchTx">
+                <a ng-click="getListData()">搜索</a>
+            </div>
+        </div>
+
+        <div class="pro_list" ng-repeat="data in listDatas.data">
+            <a ng-click="showPopView(data.fundCode,data.fundAbbr)" class="btn_border">立即预约</a>
+            <div  ng-click="gotoDetail(data)">
+                <div class="n"><a>{{data.fundAbbr}}</a><span ng-repeat="item in data.managerNames" ng-if="$index<2">{{item}}&nbsp;&nbsp;</span></div>
+                <p class="time">成立时间：{{data.fundCreateDateString}}</p>
+                <ul>
+                    <li>
+                        <span class="red_f" >{{data.allYieldSinceCreated}}%</span>
+                        <p>累计收益</p>
+                    </li>
+                    <li>
+                        <span ng-bind="data.netValue"></span>
+                        <p>最新净值</p>
+                    </li>
+                    <li>
+                        <span ng-bind="data.investStrategyString"></span>
+                        <p>投资策略</p>
+                    </li>
+                    <li>
+                        <span ng-bind="data.companyAbbrs[0]"></span>
+                        <p>投顾公司</p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    </div>
+
+    <div class="turn_page">
+        <a href="javascript:;" ng-click="prePage()" ng-class="{'disable':searchInfo.pageIndex <= 1}">上一页</a>
+        <a href="javascript:;" ng-click="nexPage()" ng-class="{'disable':searchInfo.pageIndex>=listDatas.totalPage}">下一页</a>
+    </div>
+
+    <div pop-view data="popData" ng-show="popData.isShow"></div>
+    <div class="fixblock">
+        <ul>
+            <li><i class="tele"></i><a href="tel:4000820396">电话咨询</a></li>
+            <li class="info" ng-click="showPopView('','')"><i class="person"></i><a>预约咨询</a></li>
+        </ul>
+    </div>

@@ -1,0 +1,77 @@
+{
+  "pageIndex": "1",
+  "totalPage":"14",
+  "totalCount":"2344",
+  "data": [
+    {
+      "fundAbbr": "展博一期",
+      "fundCreateDateString": "2012-8-31",
+      "allYieldSinceCreated": "213",
+      "netValue": "1.41",
+      "investStrategyString": "量化对冲",
+       "managerNames": [
+                "徐翔"
+            ],
+       "companyAbbrs": [
+                "泽熙投资"
+            ],
+      "fundCode": "FUN0009471"
+    },
+    {
+      "fundAbbr": "展博二期",
+      "fundCreateDateString": "2012-6-31",
+      "allYieldSinceCreated": "213",
+      "netValue": "1.41",
+      "investStrategyString": "量化对冲",
+       "managerNames": [
+                "徐翔"
+            ],
+       "companyAbbrs": [
+                "泽熙投资"
+            ],
+      "fundCode": "FUN0009471"
+    },
+    {
+      "fundAbbr": "展博一期",
+      "fundCreateDateString": "2012-7-31",
+      "allYieldSinceCreated": "213",
+      "netValue": "1.41",
+      "investStrategyString": "量化对冲",
+       "managerNames": [
+                "徐翔"
+            ],
+       "companyAbbrs": [
+                "泽熙投资"
+            ],
+      "fundCode": "FUN0009471"
+    },
+    {
+      "fundAbbr": "展博一期",
+      "fundCreateDateString": "2012-1-31",
+      "allYieldSinceCreated": "213",
+      "netValue": "1.41",
+      "investStrategyString": "量化对冲",
+      "managerNames": [
+                "徐翔"
+            ],
+       "companyAbbrs": [
+                "泽熙投资"
+            ],
+      "fundCode": "FUN0009471"
+    },
+    {
+      "fundAbbr": "展博一期",
+      "fundCreateDateString": "2012-9-31",
+      "allYieldSinceCreated": "213",
+      "netValue": "1.41",
+      "investStrategyString": "周润发",
+      "managerNames": [
+                "徐翔"
+            ],
+       "companyAbbrs": [
+                "泽熙投资"
+            ],
+      "fundCode": "FUN0009471"
+    }
+  ]
+}
